@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class NewDetailsPage extends StatelessWidget {
   final String title;
@@ -9,12 +9,14 @@ class NewDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WebviewScaffold(
-        url: link,
-        withZoom: true,
-        withLocalStorage: true,
-        appBar: AppBar(
-          title: Text(title),
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: WebView(
+        initialUrl: link,
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
+    );
   }
 }
